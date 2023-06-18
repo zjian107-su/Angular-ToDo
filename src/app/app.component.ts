@@ -21,11 +21,8 @@ export class AppComponent {
     { description: 'Mow the lawn', done: false },
   ];
 
-  addItem(item: Item) {
-    this.allItems.unshift(item);
-  }
-
-  worked() {
-    window.alert('Worked!');
+  addItem(description: string) {
+    this.allItems.unshift({ description, done: false });
+    window.alert('It worked');
   }
 }

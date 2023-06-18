@@ -2,9 +2,16 @@
 <h1>My To Do List</h1>
 <h1>What would you like to do today?</h1>
 
+<!-- show todo -->
 <ul>
   <li *ngFor="let item of allItems">{{item.description}} is {{item.done}}</li>
 </ul>
+
+<!-- add todo -->
+<label for="addItemInput">What would you like to do today?</label>
+<br />
+<input type="text" [(ngModel)]="newDescription" placeholder="Add a new item" #myInput id="addItemInput">
+<button (click)="addItem(myInput.value)">Add</button>
 
 <!-- Router Outlet -->
 <router-outlet></router-outlet>
