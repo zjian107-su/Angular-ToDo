@@ -15,18 +15,58 @@ export class AppComponent {
   editDescription = 'Apple';
 
   allItems: Item[] = [
-    { description: 'Buy groceries', done: false },
-    { description: 'Cook dinner', done: false },
-    { description: 'Wash the dishes', done: false },
-    { description: 'Do laundry', done: false },
-    { description: 'Walk the dog', done: false },
-    { description: 'Take out the trash', done: false },
-    { description: 'Mow the lawn', done: false },
+    {
+      description: 'Buy groceries',
+      dueDate: this.addDays(new Date(), 1),
+      priority: 1,
+      status: 'Not started',
+    },
+    {
+      description: 'Cook dinner',
+      dueDate: this.addDays(new Date(), 2),
+      priority: 2,
+      status: 'In progress',
+    },
+    {
+      description: 'Wash the dishes',
+      dueDate: this.addDays(new Date(), 2),
+      priority: 3,
+      status: 'Completed',
+    },
+    {
+      description: 'Do laundry',
+      dueDate: this.addDays(new Date(), 2),
+      priority: 1,
+      status: 'Not started',
+    },
+    {
+      description: 'Walk the dog',
+      dueDate: this.addDays(new Date(), 2),
+      priority: 2,
+      status: 'Completed',
+    },
+    {
+      description: 'Take out the trash',
+      dueDate: this.addDays(new Date(), 2),
+      priority: 1,
+      status: 'Completed',
+    },
+    {
+      description: 'Mow the lawn',
+      dueDate: this.addDays(new Date(), 2),
+      priority: 3,
+      status: 'Not started',
+    },
   ];
 
   // CRUD - Create, Read, Update, Delete
   addItem(description: string) {
-    this.allItems.unshift({ description, done: false });
+    this.allItems.unshift({
+      description,
+      dueDate: this.addDays(new Date(), 7),
+      priority: 1,
+      status: 'Not started',
+    });
     window.alert('It worked');
   }
 
@@ -47,5 +87,12 @@ export class AppComponent {
 
   deleteItem(index: number) {
     this.allItems.splice(index, 1);
+  }
+
+  // helper function
+  addDays(date: Date, days: number): Date {
+    let result = new Date(date);
+    result.setDate(result.getDate() + days);
+    return result;
   }
 }

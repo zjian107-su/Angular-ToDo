@@ -5,7 +5,8 @@
 <!-- show todo -->
 <ul>
   <li *ngFor="let item of allItems; let indexOfElement=index ">
-    {{item.description}} is {{item.done}}
+    {{item.description}} is {{item.status}}. Due on
+    {{item.dueDate?.getDate()}}/{{item.dueDate?.getMonth()}}/{{item.dueDate?.getFullYear()}}
     <button (click)="deleteItem(indexOfElement)">Delete</button>
     <button (click)="startEdit(indexOfElement)">Edit</button>
     <div *ngIf="inEdit && indexOfElement==editIndex">
