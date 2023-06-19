@@ -4,14 +4,27 @@
 
 <!-- show todo -->
 <ul>
-  <li *ngFor="let item of allItems">{{item.description}} is {{item.done}}</li>
+  <li *ngFor="let item of allItems; let indexOfElement=index ">
+    {{item.description}} is {{item.done}}
+    <button (click)="deleteItem(indexOfElement)">Delete</button>
+    <button (click)="startEdit(indexOfElement)">Edit</button>
+    <div *ngIf="inEdit && indexOfElement==editIndex">
+      <label for="editItemInput">Edit Item</label>
+      <input type="text" [(ngModel)]="editDescription" placeholder="Edit an item" #myEditInput id="editItemInput">
+      <button (click)="editItem(myEditInput.value)">Save</button>
+    </div>
+  
+  
+  </li>
 </ul>
 
 <!-- add todo -->
-<label for="addItemInput">What would you like to do today?</label>
-<br />
-<input type="text" [(ngModel)]="newDescription" placeholder="Add a new item" #myInput id="addItemInput">
-<button (click)="addItem(myInput.value)">Add</button>
+<div>
+  <label for="addItemInput">What would you like to do today?</label>
+  <br />
+  <input type="text" [(ngModel)]="newDescription" placeholder="Add a new item" #myInput id="addItemInput">
+  <button (click)="addItem(myInput.value)">Add</button>
+</div>
 
 <!-- Router Outlet -->
 <router-outlet></router-outlet>
