@@ -5,6 +5,7 @@
 <!-- show todo -->
 <ul>
   <li *ngFor="let item of allItems; let indexOfElement=index ">
+    <app-todo-item></app-todo-item>
   <!-- message -->
   {{item.description}} is {{item.status}}.
   <ng-container *ngIf="item.dueDate">
