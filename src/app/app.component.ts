@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Item } from './item';
+import { TodoService } from './todo.service';
 
 @Component({
   selector: 'app-root',
@@ -7,92 +8,41 @@ import { Item } from './item';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title: string = 'Angular-ToDo';
-  inEdit: boolean = false;
-  editIndex: number = -1;
+  allItems: Item[] = [];
+
+  constructor(private todoService: TodoService) {}
+
+  ngOnInit() {
+    this.allItems = this.todoService.allItems;
+  }
+
+  inEdit: boolean = this.todoService.inEdit;
+  editIndex: number = this.todoService.editIndex;
 
   newDescription = '';
   editDescription = 'Apple';
-
-  allItems: Item[] = [
-    {
-      description: 'Buy groceries',
-      dueDate: this.addDays(new Date(), 1),
-      priority: 1,
-      status: 'Not started',
-    },
-    {
-      description: 'Cook dinner',
-      dueDate: this.addDays(new Date(), 2),
-      priority: 2,
-      status: 'In progress',
-    },
-    {
-      description: 'Wash the dishes',
-      dueDate: this.addDays(new Date(), 2),
-      priority: 3,
-      status: 'Completed',
-    },
-    {
-      description: 'Do laundry',
-      dueDate: this.addDays(new Date(), 2),
-      priority: 1,
-      status: 'Not started',
-    },
-    {
-      description: 'Walk the dog',
-      dueDate: this.addDays(new Date(), 2),
-      priority: 2,
-      status: 'Completed',
-    },
-    {
-      description: 'Take out the trash',
-      dueDate: this.addDays(new Date(), 2),
-      priority: 1,
-      status: 'Completed',
-    },
-    {
-      description: 'Mow the lawn',
-      dueDate: this.addDays(new Date(), 2),
-      priority: 3,
-      status: 'Not started',
-    },
-  ];
-
   // CRUD - Create, Read, Update, Delete
   addItem(description: string) {
-    this.allItems.unshift({
-      description,
-      dueDate: this.addDays(new Date(), 7),
-      priority: 1,
-      status: 'Not started',
-    });
-    window.alert('It worked');
+    this.todoService.addItem(description);
   }
 
   getItems() {
-    return this.allItems;
+    return this.todoService.allItems;
   }
 
   startEdit(index: number) {
-    this.inEdit = true;
-    this.editIndex = index;
+    this.todoService.startEdit(index);
+    this.inEdit = this.todoService.inEdit;
+    this.editIndex = this.todoService.editIndex;
   }
 
-  editItem(newDescription: string) {
-    this.allItems[this.editIndex].description = this.editDescription;
-    this.inEdit = false;
-    this.editIndex = -1;
+  finishEdit(newDescription: string) {
+    this.todoService.finishEdit(newDescription);
+    this.inEdit = this.todoService.inEdit;
+    this.editIndex = this.todoService.editIndex;
   }
 
   deleteItem(index: number) {
-    this.allItems.splice(index, 1);
-  }
-
-  // helper function
-  addDays(date: Date, days: number): Date {
-    let result = new Date(date);
-    result.setDate(result.getDate() + days);
-    return result;
+    this.todoService.deleteItem(index);
   }
 }
