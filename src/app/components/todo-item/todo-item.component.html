@@ -1,1 +1,16 @@
-todo-item works!
+<!-- message -->
+{{item.description}} is {{item.status}}.
+<ng-container *ngIf="item.dueDate">
+  Due on {{item.dueDate.getDate()}}/{{item.dueDate.getMonth() + 1}}/{{item.dueDate.getFullYear()}}
+</ng-container>
+
+<!-- buttons delete -->
+<button (click)="deleteItem()">Delete</button>
+
+<!-- buttons edit -->
+<button (click)="startEdit()">Edit</button>
+<div *ngIf="inEdit">
+  <label for="editItemInput">Edit Item</label>
+  <input type="text" [value]="editDescription" placeholder="Edit this item" #description>
+  <button (click)="finishEdit(description.value)">Save</button>
+</div>

@@ -5,22 +5,8 @@
 <!-- show todo -->
 <ul>
   <li *ngFor="let item of allItems; let indexOfElement=index ">
-    <app-todo-item></app-todo-item>
-  <!-- message -->
-  {{item.description}} is {{item.status}}.
-  <ng-container *ngIf="item.dueDate">
-    Due on {{item.dueDate.getDate()}}/{{item.dueDate.getMonth() + 1}}/{{item.dueDate.getFullYear()}}
-  </ng-container>
-  
-  <!-- buttons -->
-    <button (click)="deleteItem(indexOfElement)">Delete</button>
-    <button (click)="startEdit(indexOfElement)">Edit</button>
-    <div *ngIf="inEdit && indexOfElement==editIndex">
-      <label for="editItemInput">Edit Item</label>
-      <input type="text" [(ngModel)]="editDescription" placeholder="Edit an item" #myEditInput id="editItemInput">
-      <button (click)="finishEdit(myEditInput.value)">Save</button>
-    </div>
-
+    <app-todo-item [item]="item" [index]="indexOfElement" (deleteItemEvent)="deleteItem($event)"
+      (startEditEvent)="startEdit($event)" (finishEditEvent)="finishEdit($event)"></app-todo-item>
   </li>
 </ul>
 
