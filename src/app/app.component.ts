@@ -8,38 +8,15 @@ import { TodoService } from './todo.service';
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  allItems: Item[] = [];
+  constructor(public todoService: TodoService) {}
 
-  constructor(private todoService: TodoService) {}
-
-  ngOnInit() {
-    this.allItems = this.todoService.allItems;
-  }
+  ngOnInit() {}
 
   editIndex: number = this.todoService.editIndex;
 
   newDescription = '';
-  editDescription = 'Apple';
-  // CRUD - Create, Read, Update, Delete
+
   addItem(description: string) {
     this.todoService.addItem(description);
-  }
-
-  getItems() {
-    return this.todoService.allItems;
-  }
-
-  startEdit(index: number) {
-    this.todoService.startEdit(index);
-    this.editIndex = this.todoService.editIndex;
-  }
-
-  finishEdit(newDescription: string) {
-    this.todoService.finishEdit(newDescription);
-    this.editIndex = this.todoService.editIndex;
-  }
-
-  deleteItem(index: number) {
-    this.todoService.deleteItem(index);
   }
 }

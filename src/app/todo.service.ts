@@ -8,6 +8,7 @@ export class TodoService {
   constructor() {}
 
   editIndex: number = -1;
+  editDescription: string = '';
 
   allItems: Item[] = [
     {

@@ -1,5 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../../item';
+import { TodoService } from '../../todo.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -15,23 +16,20 @@ export class TodoItemComponent {
     status: 'Not started',
   };
   @Input() index: number = -1;
-  @Output() deleteItemEvent = new EventEmitter<number>();
-  @Output() startEditEvent = new EventEmitter<number>();
-  @Output() finishEditEvent = new EventEmitter<string>();
 
-  constructor() {}
+  constructor(public todoService: TodoService) {}
 
   editDescription: string = '';
 
   deleteItem(): void {
-    this.deleteItemEvent.emit(this.index);
+    this.todoService.deleteItem(this.index);
   }
 
   startEdit(): void {
-    this.startEditEvent.emit(this.index);
+    this.todoService.startEdit(this.index);
   }
 
-  finishEdit(newDescritpion: string | undefined): void {
-    this.finishEditEvent.emit(newDescritpion);
+  finishEdit(newDescritpion: string): void {
+    this.todoService.finishEdit(newDescritpion);
   }
 }
