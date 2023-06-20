@@ -6,11 +6,21 @@ import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { TodoItemComponent } from './components/todo-item/todo-item.component';
 import { RouterModule, Routes } from '@angular/router';
+import { TodoListComponent } from './components/todo-list/todo-list.component';
+import { AddFormComponent } from './components/add-form/add-form.component';
 
-const routes: Routes = [{ path: '', component: AppComponent }];
+const routes: Routes = [
+  { path: '', component: TodoListComponent },
+  { path: 'add', component: AddFormComponent },
+];
 
 @NgModule({
-  declarations: [AppComponent, TodoItemComponent],
+  declarations: [
+    AppComponent,
+    TodoItemComponent,
+    TodoListComponent,
+    AddFormComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,

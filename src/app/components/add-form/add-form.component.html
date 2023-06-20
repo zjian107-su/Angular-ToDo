@@ -1,0 +1,11 @@
+<form>
+  <fieldset>
+    <legend>Add Todos below</legend>
+    <input type="text" [(ngModel)]="newDescription" placeholder="Add a new item" #myInput id="addItemInput">
+    <div>
+      <button (click)="addItem(myInput.value)">Add</button>
+    </div>
+  </fieldset>
+</form>
+
+<h1><a href="" routerLink="/">Back to the main page</a></h1>

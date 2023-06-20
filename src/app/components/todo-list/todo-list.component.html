@@ -1,0 +1,10 @@
+<h1>🍱 What would you like to do today?</h1>
+
+<!-- show todo -->
+<ul>
+  <li *ngFor="let item of this.todoService.allItems; let indexOfElement=index">
+    <app-todo-item [item]="item" [index]="indexOfElement"></app-todo-item>
+  </li>
+</ul>
+
+<h1><a href="" routerLink="/add">Add doto</a></h1>

@@ -1,30 +1,9 @@
-
 <h1>🍩 My To Do List</h1>
-<h1>🍱 What would you like to do today?</h1>
 
-<h2>🐸 {{this.todoService.allItems.length}}
+<h1>🐸 Summary: {{this.todoService.allItems.length}}
   <div *ngIf="this.todoService.allItems.length <= 1; else elseBlock">item</div>
   <ng-template #elseBlock>items</ng-template>
   left to do!
-</h2>
-
-<!-- show todo -->
-<ul>
-  <li *ngFor="let item of this.todoService.allItems; let indexOfElement=index">
-    <app-todo-item [item]="item" [index]="indexOfElement"></app-todo-item>
-  </li>
-</ul>
-
-<form>
-  <fieldset>
-    <legend>Add Todos below</legend>
-    <input type="text" [(ngModel)]="newDescription" placeholder="Add a new item" #myInput id="addItemInput">
-    <div>
-      <button (click)="addItem(myInput.value)">Add</button>
-      </div>
-  </fieldset>
-  </form>
-  
-  <a href="" routerLink="/">Back to List</a>
+</h1>
 <!-- Router Outlet -->
 <router-outlet></router-outlet>

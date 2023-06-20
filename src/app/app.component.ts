@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Item } from './item';
 import { TodoService } from './todo.service';
 
 @Component({
@@ -9,14 +8,4 @@ import { TodoService } from './todo.service';
 })
 export class AppComponent {
   constructor(public todoService: TodoService) {}
-
-  ngOnInit() {}
-
-  editIndex: number = this.todoService.editIndex;
-
-  newDescription = '';
-
-  addItem(description: string) {
-    this.todoService.addItem(description);
-  }
 }
