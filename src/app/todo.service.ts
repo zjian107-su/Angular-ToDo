@@ -7,7 +7,6 @@ import { Item } from './item';
 export class TodoService {
   constructor() {}
 
-  inEdit: boolean = false;
   editIndex: number = -1;
 
   allItems: Item[] = [
@@ -70,13 +69,11 @@ export class TodoService {
   }
 
   startEdit(index: number) {
-    this.inEdit = true;
     this.editIndex = index;
   }
 
   finishEdit(description: string) {
     this.allItems[this.editIndex].description = description;
-    this.inEdit = false;
     this.editIndex = -1;
   }
 

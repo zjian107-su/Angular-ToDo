@@ -9,7 +9,7 @@
 
 <!-- buttons edit -->
 <button (click)="startEdit()">Edit</button>
-<div *ngIf="inEdit">
+<div *ngIf="index >= 0">
   <label for="editItemInput">Edit Item</label>
   <input type="text" [value]="editDescription" placeholder="Edit this item" #description>
   <button (click)="finishEdit(description.value)">Save</button>

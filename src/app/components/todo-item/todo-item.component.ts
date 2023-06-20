@@ -21,7 +21,6 @@ export class TodoItemComponent {
 
   constructor() {}
 
-  inEdit: boolean = false;
   editDescription: string = '';
 
   deleteItem(): void {
@@ -30,11 +29,9 @@ export class TodoItemComponent {
 
   startEdit(): void {
     this.startEditEvent.emit(this.index);
-    this.inEdit = true;
   }
 
   finishEdit(newDescritpion: string | undefined): void {
     this.finishEditEvent.emit(newDescritpion);
-    this.inEdit = false;
   }
 }

@@ -16,7 +16,6 @@ export class AppComponent {
     this.allItems = this.todoService.allItems;
   }
 
-  inEdit: boolean = this.todoService.inEdit;
   editIndex: number = this.todoService.editIndex;
 
   newDescription = '';
@@ -32,13 +31,11 @@ export class AppComponent {
 
   startEdit(index: number) {
     this.todoService.startEdit(index);
-    this.inEdit = this.todoService.inEdit;
     this.editIndex = this.todoService.editIndex;
   }
 
   finishEdit(newDescription: string) {
     this.todoService.finishEdit(newDescription);
-    this.inEdit = this.todoService.inEdit;
     this.editIndex = this.todoService.editIndex;
   }
 
