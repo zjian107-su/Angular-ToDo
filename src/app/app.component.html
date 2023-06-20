@@ -15,13 +15,16 @@
   </li>
 </ul>
 
-<!-- add todo -->
-<div>
-  <label for="addItemInput">What would you like to do today?</label>
-  <br />
-  <input type="text" [(ngModel)]="newDescription" placeholder="Add a new item" #myInput id="addItemInput">
-  <button (click)="addItem(myInput.value)">Add</button>
-</div>
-
+<form>
+  <fieldset>
+    <legend>Add Todos below</legend>
+    <input type="text" [(ngModel)]="newDescription" placeholder="Add a new item" #myInput id="addItemInput">
+    <div>
+      <button (click)="addItem(myInput.value)">Add</button>
+      </div>
+  </fieldset>
+  </form>
+  
+  <a href="" routerLink="/">Back to List</a>
 <!-- Router Outlet -->
 <router-outlet></router-outlet>
