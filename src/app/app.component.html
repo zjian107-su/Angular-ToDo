@@ -1,6 +1,12 @@
 
-<h1>My To Do List</h1>
-<h1>What would you like to do today?</h1>
+<h1>🍩 My To Do List</h1>
+<h1>🍱 What would you like to do today?</h1>
+
+<h2>🐸 {{allItems.length}}
+  <div *ngIf="allItems.length <= 1; else elseBlock">item</div>
+  <ng-template #elseBlock>items</ng-template>
+  left to do!
+</h2>
 
 <!-- show todo -->
 <ul>
