@@ -19,7 +19,8 @@ import { LoginComponent } from './components/login/login.component';
 // After all of those, I can simulate login guards with Promises and Observables with setTimeout
 
 const routes: Routes = [
-  { path: '', component: LoginComponent },
+  { path: 'login', component: LoginComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'list', component: TodoListComponent },
   { path: 'add', component: AddFormComponent },
 ];
