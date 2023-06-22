@@ -1,6 +1,6 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { Item } from '../../interfaces/item';
-import { TodoService } from '../../todo.service';
+import { TodoService } from '../../services/todo.service';
 
 @Component({
   selector: 'app-todo-item',
@@ -18,8 +18,6 @@ export class TodoItemComponent {
   @Input() index: number = -1;
 
   constructor(public todoService: TodoService) {}
-
-  editDescription: string = '';
 
   deleteItem(): void {
     this.todoService.deleteItem(this.index);

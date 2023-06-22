@@ -11,7 +11,7 @@
 <!-- buttons edit -->
 <button (click)="startEdit()">Edit</button>
 <div *ngIf="index==this.todoService.editIndex ">
-  <label for="editItemInput">Edit Item</label>
-  <input type="text" [value]="this.todoService.editDescription" placeholder="Edit this item" #description>
+  <label for="editItemInput">Edit Item:</label>
+  <input type="text" [value]="this.todoService.editDescription" placeholder="{{item.description}}" #description required>
   <button (click)="finishEdit(description.value)">Save</button>
 </div>

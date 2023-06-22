@@ -9,6 +9,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
 import { LoginComponent } from './components/login/login.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 // I have a few components
 // Here is the flow
@@ -19,10 +20,15 @@ import { LoginComponent } from './components/login/login.component';
 // After all of those, I can simulate login guards with Promises and Observables with setTimeout
 
 const routes: Routes = [
-  { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'list', component: TodoListComponent },
-  { path: 'add', component: AddFormComponent },
+  { path: 'login', component: LoginComponent },
+  {
+    path: 'list',
+    canActivate: [AuthGuardService],
+    component: TodoListComponent,
+  },
+  { path: 'add', canActivate: [AuthGuardService], component: AddFormComponent },
+  { path: '**', redirectTo: '/login', pathMatch: 'full' },
 ];
 
 @NgModule({
