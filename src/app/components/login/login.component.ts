@@ -12,5 +12,6 @@ export class LoginComponent {
 
   login(): void {
     this.authService.login();
+    window.alert('You have been logged in.');
   }
 }

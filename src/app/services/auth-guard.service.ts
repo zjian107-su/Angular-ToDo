@@ -18,16 +18,11 @@ export class AuthGuardService {
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean | any {
-    this.authService.isAuthenticated().then((authenticated: boolean) => {
+    return this.authService.isAuthenticated().then((authenticated: boolean) => {
       if (authenticated) {
-        console.log(
-          'Authenticated confirmed in auth-guard.service.ts, and guard passed.'
-        );
         return true;
       } else {
-        console.log(
-          'Authenticated not confirmed in auth-guard.service.ts, and guard failed.'
-        );
+        window.alert('Please log in to view this page.');
         this.router.navigate(['/']);
         return false;
       }
