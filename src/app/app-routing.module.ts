@@ -4,6 +4,7 @@ import { AddFormComponent } from './components/add-form/add-form.component';
 import { LoginComponent } from './components/login/login.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
@@ -14,7 +15,7 @@ const routes: Routes = [
     component: TodoListComponent,
   },
   { path: 'add', canActivate: [AuthGuardService], component: AddFormComponent },
-  { path: '**', redirectTo: '/login', pathMatch: 'full' },
+  { path: '**', component: PageNotFoundComponent },
 ];
 
 @NgModule({

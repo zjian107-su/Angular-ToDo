@@ -1,0 +1,14 @@
+.home-link {
+  text-decoration: none; /* Removes the underline */
+  color: #333; /* Changes the link color */
+  transition: color 0.3s ease; /* Smooth color transition */
+}
+
+.home-link:hover {
+  color: #007bff; /* Changes the link color on hover */
+}
+
+.home-link h1 {
+  margin: 0; /* Removes the default margin on the h1 */
+  font-size: 2em; /* Sets the font size */
+}
