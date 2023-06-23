@@ -22,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'add',
-    // canActivate: [AuthGuardService],
+    canActivate: [AuthGuardService],
     component: AddFormComponent,
   },
   { path: '**', component: PageNotFoundComponent },
