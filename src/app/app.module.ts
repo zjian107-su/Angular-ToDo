@@ -10,7 +10,8 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
 import { LoginComponent } from './components/login/login.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-
+import { TodoItemDetailComponent } from './todo-item-detail/todo-item-detail.component';
+import { PrioTransPipe } from './pipes/prio-trans.pipe';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     AddFormComponent,
     LoginComponent,
     PageNotFoundComponent,
+    TodoItemDetailComponent,
+    PrioTransPipe,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

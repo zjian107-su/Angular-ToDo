@@ -17,7 +17,7 @@ export class TodoService {
       dueDate: this.addDays(new Date(), 1),
       priority: 1,
       status: 'Not started',
-      id: uuid(),
+      id: '713c60b2-aaab-4b17-be12-e0da198d4318',
     },
     {
       description: 'Cook dinner',

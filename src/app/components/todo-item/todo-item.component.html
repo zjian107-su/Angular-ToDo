@@ -1,6 +1,8 @@
 <!-- message -->
 
-{{item.description}} is {{item.status}}.
+<a [title]="item.description+'detail'" [routerLink]="['/todo_item', item.id]">{{item.description}}</a>
+
+is {{item.status}}.
 <ng-container *ngIf="item.dueDate">
   Due on {{item.dueDate.getDate()}}/{{item.dueDate.getMonth() + 1}}/{{item.dueDate.getFullYear()}}
 </ng-container>
