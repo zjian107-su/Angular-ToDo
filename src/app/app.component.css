@@ -12,3 +12,36 @@
   margin: 0; /* Removes the default margin on the h1 */
   font-size: 2em; /* Sets the font size */
 }
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1em;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav { 
+  display: flex;
+  justify-content: space-between;
+  width: 50%;
+  padding: 0.5em;
+  background-color: #f9f9f9;
+  font-size: 1.5em;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: bold
+}
+
+nav a:hover {
+  color: #007bff;
+}
+
+nav a.active {
+  color: #007bff;
+  font-weight: bold;
+}
