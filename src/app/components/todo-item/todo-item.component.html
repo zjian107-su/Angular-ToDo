@@ -1,6 +1,6 @@
 <!-- message -->
 
-<a [title]="item.description+'detail'" [routerLink]="['/todo_item', item.id]">{{item.description}}</a>
+<b><a [title]="item.description+'detail'" [routerLink]="['/todo_item', item.id]">{{item.description}}</a></b>
 
 is {{item.status}}.
 <ng-container *ngIf="item.dueDate">

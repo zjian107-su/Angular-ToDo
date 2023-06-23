@@ -1,0 +1,40 @@
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5em;
+  background-color: #f9f9f9;
+}
+
+.home-link {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.home-link h1 {
+  margin: 0;
+  font-size: 2em;
+}
+
+nav a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: bold;
+}
+
+nav a:not(.home-link) {
+  margin-left: auto;
+  font-size: 1.5em;
+}
+
+@media screen and (max-width: 600px) {
+  nav a:not(.home-link) {
+    font-size: 1em;
+  }
+
+  .home-link h1 {
+    font-size: 1.5em;
+  }
+}

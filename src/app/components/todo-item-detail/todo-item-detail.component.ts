@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Item } from '../interfaces/item';
-import { TodoService } from '../services/todo.service';
-import { PrioTransPipe } from '../pipes/prio-trans.pipe';
+import { Item } from '../../interfaces/item';
+import { TodoService } from '../../services/todo.service';
+import { PrioTransPipe } from '../../pipes/prio-trans.pipe';
 
 @Component({
   selector: 'app-todo-item-detail',

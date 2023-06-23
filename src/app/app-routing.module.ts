@@ -4,14 +4,14 @@ import { AddFormComponent } from './components/add-form/add-form.component';
 import { LoginComponent } from './components/login/login.component';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AuthGuardService } from './services/auth-guard.service';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TodoItemDetailComponent } from './todo-item-detail/todo-item-detail.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { TodoItemDetailComponent } from './components/todo-item-detail/todo-item-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
-    path: 'list',
+    path: 'todo_list',
     canActivate: [AuthGuardService],
     component: TodoListComponent,
   },

@@ -9,9 +9,10 @@ import { RouterModule, Routes } from '@angular/router';
 import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AddFormComponent } from './components/add-form/add-form.component';
 import { LoginComponent } from './components/login/login.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { TodoItemDetailComponent } from './todo-item-detail/todo-item-detail.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
+import { TodoItemDetailComponent } from './components/todo-item-detail/todo-item-detail.component';
 import { PrioTransPipe } from './pipes/prio-trans.pipe';
+import { TopBarComponent } from './components/top-bar/top-bar.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { PrioTransPipe } from './pipes/prio-trans.pipe';
     PageNotFoundComponent,
     TodoItemDetailComponent,
     PrioTransPipe,
+    TopBarComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
