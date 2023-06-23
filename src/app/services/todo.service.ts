@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Item } from '../interfaces/item';
+import { v4 as uuid } from 'uuid';
 
 @Injectable({
   providedIn: 'root',
@@ -16,42 +17,49 @@ export class TodoService {
       dueDate: this.addDays(new Date(), 1),
       priority: 1,
       status: 'Not started',
+      id: uuid(),
     },
     {
       description: 'Cook dinner',
       dueDate: this.addDays(new Date(), 2),
       priority: 2,
       status: 'In progress',
+      id: uuid(),
     },
     {
       description: 'Wash the dishes',
       dueDate: this.addDays(new Date(), 2),
       priority: 3,
       status: 'Completed',
+      id: uuid(),
     },
     {
       description: 'Do laundry',
       dueDate: this.addDays(new Date(), 2),
       priority: 1,
       status: 'Not started',
+      id: uuid(),
     },
     {
       description: 'Walk the dog',
       dueDate: this.addDays(new Date(), 2),
       priority: 2,
       status: 'Completed',
+      id: uuid(),
     },
     {
       description: 'Take out the trash',
       dueDate: this.addDays(new Date(), 2),
       priority: 1,
       status: 'Completed',
+      id: uuid(),
     },
     {
       description: 'Mow the lawn',
       dueDate: this.addDays(new Date(), 10),
       priority: 3,
       status: 'Not started',
+      id: uuid(),
     },
   ];
 
@@ -62,6 +70,7 @@ export class TodoService {
       dueDate: this.addDays(new Date(), 7),
       priority: 1,
       status: 'Not started',
+      id: uuid(),
     });
   }
 

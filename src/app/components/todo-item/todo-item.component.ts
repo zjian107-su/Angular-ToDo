@@ -14,6 +14,7 @@ export class TodoItemComponent {
     dueDate: new Date(),
     priority: 1,
     status: 'Not started',
+    id: '',
   };
   @Input() index: number = -1;
 

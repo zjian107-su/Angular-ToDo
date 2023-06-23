@@ -6,7 +6,7 @@ https://jade-unicorn-f8d230.netlify.app/login
 ### Brainstorming for features
 - [x] Simulate login
 - [x] Simulate route guard
-- [ ] Nav link with tabs using routerLinkActive
+- [x] Nav link with tabs using routerLinkActive
 - [ ] Route id param to view specific todo
 - [ ] Show three section of status: Todo, In Progress, Completed
 - [ ] Observable to update status

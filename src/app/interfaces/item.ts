@@ -6,4 +6,5 @@ export interface Item {
   dueDate?: Date;
   priority: 1 | 2 | 3;
   status: 'Not started' | 'In progress' | 'Completed';
+  id: string;
 }
