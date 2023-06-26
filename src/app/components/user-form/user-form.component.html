@@ -4,16 +4,29 @@
     <h2>Current Users:</h2>
 
     <p *ngFor="let user of userList">
-      {{user.name}} - {{user.id}}
+      {{user.name}} - {{user.age}}
     </p>
   </div>
 
   <div class="col-6">
     <h2> Register </h2>
-    <div class="form-group">
-      <label for="name">Name:</label>
-      <input type="text" id="name" #userName>
-      <div><button (click)="register(userName.value)">Add User</button></div>
-    </div>
+    <form (ngSubmit)="onSubmitted(f)" #f="ngForm">
+      <div class="form-group">
+        <label for="name">Your name:</label>
+        <input class="form-control" type="text" id="name" name="name" ngModel required>
+        </div>
+      <div class="form-group">
+        <label for="age">Your age: </label>
+        <input class="form-control" type="text" id="age" name="age" ngModel required>
+      </div>
+      <div class="row">
+        <div class="col-sm-6">
+          <button class="btn btn-success" type="button" (click)="onAutoFill()">Auto Fill</button>
+        </div>
+        <div class="col-sm-6">
+          <button class="btn btn-primary" type="submit">Submit</button>
+        </div>
+      </div>
+      </form>
   </div>
 </div>
