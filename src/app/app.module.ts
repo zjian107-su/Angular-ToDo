@@ -16,6 +16,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { SessionComponent } from './components/session/session.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StatusIndicatorDirective } from './directives/status-indicator-directive.directive';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     TopBarComponent,
     UserFormComponent,
     SessionComponent,
+    StatusIndicatorDirective,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],

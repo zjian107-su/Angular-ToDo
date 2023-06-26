@@ -7,22 +7,25 @@ import { AuthGuardService } from './services/auth-guard.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TodoItemDetailComponent } from './components/todo-item-detail/todo-item-detail.component';
 
+// dev control
+let devMode: boolean = true;
+
 const routes: Routes = [
   { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   {
     path: 'todo_list',
-    canActivate: [AuthGuardService],
+    canActivate: devMode ? [] : [AuthGuardService],
     component: TodoListComponent,
   },
   {
     path: 'todo_item/:id',
-    canActivate: [AuthGuardService],
+    canActivate: devMode ? [] : [AuthGuardService],
     component: TodoItemDetailComponent,
   },
   {
     path: 'add',
-    canActivate: [AuthGuardService],
+    canActivate: devMode ? [] : [AuthGuardService],
     component: AddFormComponent,
   },
   { path: '**', component: PageNotFoundComponent },

@@ -8,8 +8,10 @@
 
 <!-- show todo -->
 <ul>
-  <li *ngFor="let item of this.todoService.allItems; let indexOfElement=index" class="todo-item">
+  <li *ngFor="let item of this.todoService.allItems; let indexOfElement=index" class="todo-item ">
     <app-todo-item [item]="item" [index]="indexOfElement"></app-todo-item>
+    <div [appStatusIndicator]="item.status" style="width: 20px; height: 20px; float: right;">
+    </div>
   </li>
 </ul>
 

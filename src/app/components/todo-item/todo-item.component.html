@@ -1,10 +1,10 @@
-<!-- message -->
+<b><a [title]="item.description+'detail'" [routerLink]="['/todo_item', item.id]"
+    class="text-dark">{{item.description}}</a></b>
 
-<b><a [title]="item.description+'detail'" [routerLink]="['/todo_item', item.id]">{{item.description}}</a></b>
-
-is {{item.status}}.
+is <b>{{item.status}}</b>.
 <ng-container *ngIf="item.dueDate">
-  Due on {{item.dueDate.getDate()}}/{{item.dueDate.getMonth() + 1}}/{{item.dueDate.getFullYear()}}
+  Due on {{item.dueDate.getDate()}}/{{item.dueDate.getMonth() + 1}}/{{item.dueDate.getFullYear()}}. <b>{{item.priority |
+    prioTrans}}</b> priority.
 </ng-container>
 
 <!-- buttons delete -->
@@ -12,7 +12,7 @@ is {{item.status}}.
 
 <!-- buttons edit -->
 <button (click)="startEdit()">Edit</button>
-<div *ngIf="index==this.todoService.editIndex ">
+<div *ngIf="index==this.todoService.editIndex">
   <label for="editItemInput">Edit Item:</label>
   <input type="text" [value]="this.todoService.editDescription" placeholder="{{item.description}}" #description required>
   <button (click)="finishEdit(description.value)">Save</button>
