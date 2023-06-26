@@ -8,11 +8,10 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { TodoItemDetailComponent } from './components/todo-item-detail/todo-item-detail.component';
 
 // dev control
-let devMode: boolean = true;
+let devMode: boolean = false;
 
 const routes: Routes = [
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
-  { path: 'login', component: LoginComponent },
+  { path: '', component: LoginComponent },
   {
     path: 'todo_list',
     canActivate: devMode ? [] : [AuthGuardService],
