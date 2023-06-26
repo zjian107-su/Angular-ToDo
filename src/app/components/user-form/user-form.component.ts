@@ -9,7 +9,7 @@ import { v4 as uuid } from 'uuid';
   styleUrls: ['./user-form.component.css'],
 })
 export class UserFormComponent {
-  @ViewChild('f') signupForm!: any;
+  @ViewChild('f') signupForm!: NgForm;
   userList: User[] = [];
 
   ngOnInit() {

@@ -15,6 +15,7 @@ import { PrioTransPipe } from './pipes/prio-trans.pipe';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
 import { UserFormComponent } from './components/user-form/user-form.component';
 import { SessionComponent } from './components/session/session.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,7 @@ import { SessionComponent } from './components/session/session.component';
     UserFormComponent,
     SessionComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule],
+  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
   providers: [],
   bootstrap: [AppComponent],
   exports: [],

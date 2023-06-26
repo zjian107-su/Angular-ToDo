@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-add-form',
@@ -8,10 +9,10 @@ import { TodoService } from '../../services/todo.service';
 })
 export class AddFormComponent {
   constructor(public todoService: TodoService) {}
-  editIndex: number = this.todoService.editIndex;
-  newDescription = '';
 
-  addItem(description: string) {
-    this.todoService.addItem(description);
+  reactiveItem: FormControl = new FormControl('');
+
+  addItem() {
+    this.todoService.addItem(this.reactiveItem.value);
   }
 }

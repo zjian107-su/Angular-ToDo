@@ -1,20 +1,31 @@
+<div>
 <h1>🍹 Add Form ↙️</h1>
 <h1>🐸 Summary: {{this.todoService.allItems.length}}
   <div *ngIf="this.todoService.allItems.length <= 1; else elseBlock">item</div>
-  <ng-template #elseBlock>items</ng-template>
+  <ng-template #elseBlock>
+    items
+  </ng-template>
   left to do!
 </h1>
-<form>
-  <fieldset>
-    <legend>Add Todos below</legend>
-    <input type="text" [(ngModel)]="newDescription" placeholder="Add a new item" name="newDesc" #myInput id="addItemInput"
-      required>
-    <div>
-      <button (click)="addItem(myInput.value)" [disabled]="!newDescription">Add</button>
-    </div>
-  </fieldset>
-</form>
+<div class="row">
+  <div class="col-6">
+    <form>
+      <fieldset>
+        <legend>Add Todos below</legend>
+        <input id="item" type="text" [formControl]="reactiveItem" placeholder="Add a new item" class="form-control">
+        <div>
+          <button (click)="addItem()" [disabled]="!reactiveItem.value">ADD</button>
+          </div>
+          </fieldset>
 
-<h1><a routerLink="/todo_list" routerLinkActive="active"><button
-      [ngStyle]="{'font-size': '32px', 'padding': '10px 20px'}">🥭
-      Back to the list page</button></a></h1>
+    </form>
+  </div>
+  
+  <div class="col-6"></div>
+  </div>
+  <a routerLink="/todo_list" routerLinkActive="active">
+    <button [ngStyle]="{'font-size': '28px', 'padding': '10px 20px'}">🥭
+      <h1>Back to the list page</h1>
+    </button>
+  </a>
+  </div>
