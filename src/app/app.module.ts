@@ -13,6 +13,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { TodoItemDetailComponent } from './components/todo-item-detail/todo-item-detail.component';
 import { PrioTransPipe } from './pipes/prio-trans.pipe';
 import { TopBarComponent } from './components/top-bar/top-bar.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { TopBarComponent } from './components/top-bar/top-bar.component';
     TodoItemDetailComponent,
     PrioTransPipe,
     TopBarComponent,
+    UserFormComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],

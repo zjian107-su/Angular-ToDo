@@ -1,0 +1,19 @@
+<h1> User Form </h1>
+<div class="row" style="background-color: beige;">
+  <div class="col-6">
+    <h2>Current Users:</h2>
+
+    <p *ngFor="let user of userList">
+      {{user.name}} - {{user.id}}
+    </p>
+  </div>
+
+  <div class="col-6">
+    <h2> Register </h2>
+    <div class="form-group">
+      <label for="name">Name:</label>
+      <input type="text" id="name" #userName>
+      <div><button (click)="register(userName.value)">Add User</button></div>
+    </div>
+  </div>
+</div>
