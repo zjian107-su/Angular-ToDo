@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
+import { Item } from 'src/app/interfaces/item';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,4 +9,6 @@ import { TodoService } from '../../services/todo.service';
 })
 export class TodoListComponent {
   constructor(public todoService: TodoService) {}
+
+  allTodos: Item[] = this.todoService.getItems();
 }

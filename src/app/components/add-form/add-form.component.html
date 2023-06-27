@@ -1,7 +1,7 @@
 <div>
 <h1>🍹 Add Form ↙️</h1>
-<h1>🐸 Summary: {{this.todoService.allItems.length}}
-  <div *ngIf="this.todoService.allItems.length <= 1; else elseBlock">item</div>
+<h1>🐸 Summary: {{todos.length}}
+  <div *ngIf="todos.length <= 1; else elseBlock">item</div>
   <ng-template #elseBlock>
     items
   </ng-template>

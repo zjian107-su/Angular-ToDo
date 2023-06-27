@@ -11,6 +11,7 @@ export class AddFormComponent {
   constructor(public todoService: TodoService) {}
 
   reactiveItem: FormControl = new FormControl('');
+  todos = this.todoService.getItems();
 
   addItem() {
     this.todoService.addItem(this.reactiveItem.value);

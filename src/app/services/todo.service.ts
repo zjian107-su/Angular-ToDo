@@ -74,7 +74,7 @@ export class TodoService {
     });
   }
 
-  getItems() {
+  getItems(): Item[] {
     return this.allItems;
   }
 
