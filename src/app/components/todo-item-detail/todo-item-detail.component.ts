@@ -1,3 +1,4 @@
+import { Subscription, Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Item } from '../../interfaces/item';
@@ -10,23 +11,27 @@ import { PrioTransPipe } from '../../pipes/prio-trans.pipe';
   styleUrls: ['./todo-item-detail.component.css'],
 })
 export class TodoItemDetailComponent implements OnInit {
+  todos: Item[] = [];
+  todo: Item | undefined;
+  todoObservable = new Subscription();
+
   constructor(
     private route: ActivatedRoute,
     private todoService: TodoService
   ) {}
 
-  todos: Item[] = [];
-  todo: Item | undefined;
-
   ngOnInit(): void {
-    const routeParams = this.route.snapshot.paramMap;
-    const todoIdFromRoute = String(routeParams.get('id'));
-    this.todos = this.todoService.getItems();
+    const todoIdFromRoute = this.route.snapshot.paramMap.get('id');
 
-    this.todo = this.todos.find((todo) => {
-      return todo.id === todoIdFromRoute;
+    this.todoObservable = this.todoService.allItemsObs$.subscribe((data) => {
+      this.todos = data;
+      this.todo = this.todos.find((todo) => {
+        return todo.id === todoIdFromRoute;
+      });
     });
+  }
 
-    console.log(typeof this.todo);
+  ngOnDestroy(): void {
+    this.todoObservable.unsubscribe();
   }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TodoService } from '../../services/todo.service';
 import { Item } from 'src/app/interfaces/item';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,7 +9,9 @@ import { Item } from 'src/app/interfaces/item';
   styleUrls: ['./todo-list.component.css'],
 })
 export class TodoListComponent {
-  constructor(public todoService: TodoService) {}
+  allTodos$: Observable<Item[]> = new Observable<Item[]>();
 
-  allTodos: Item[] = this.todoService.getItems();
+  constructor(public todoService: TodoService) {
+    this.allTodos$ = this.todoService.allItemsObs$;
+  }
 }

@@ -8,7 +8,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 import { TodoItemDetailComponent } from './components/todo-item-detail/todo-item-detail.component';
 
 // dev control
-let devMode: boolean = false;
+let devMode: boolean = true;
 
 const routes: Routes = [
   { path: '', component: LoginComponent },

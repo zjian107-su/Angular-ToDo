@@ -1,5 +1,5 @@
-<h1>🐸 Summary: {{allTodos.length}}
-  <div *ngIf="allTodos.length <= 1; else elseBlock">item</div>
+<h1>🐸 Summary: {{(allTodos$ | async)?.length}}
+  <div *ngIf="(allTodos$ | async)!.length <= 1; else elseBlock">item</div>
   <ng-template #elseBlock>items</ng-template>
   left to do!
 </h1>
@@ -8,7 +8,8 @@
 
 <!-- show todo -->
 <ul>
-  <li *ngFor="let item of allTodos; let indexOfElement=index" class="todo-item ">
+  <li *ngFor="let item of allTodos$ | async; let indexOfElement=index" class="todo-item ">
+    <!-- {{item.description}} -->
     <app-todo-item [item]="item" [index]="indexOfElement"></app-todo-item>
     <div [appStatusIndicator]="item.status" style="width: 20px; height: 20px; float: right;">
     </div>
