@@ -12,10 +12,8 @@
     <div class="input-group input-group-lg">
       <span class="input-group-text" id="inputGroup-sizing-lg">Auto-Search</span>
       <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg"
-        [(ngModel)]="search" id="search" name="search">
+        [formControl]="searchControl" id="search" name="search">
     </div>
-    <button type="submit">Search</button>
-
   </form>
 </div>
 
