@@ -6,16 +6,16 @@ import { TodoListComponent } from './components/todo-list/todo-list.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { TodoItemDetailComponent } from './components/todo-item-detail/todo-item-detail.component';
+import { UserFormComponent } from './components/user-form/user-form.component';
 
 // dev control
-let devMode: boolean = true;
+let devMode: boolean = false;
 
 const routes: Routes = [
   { path: '', component: LoginComponent },
   {
-    path: 'todo_list',
-    canActivate: devMode ? [] : [AuthGuardService],
-    component: TodoListComponent,
+    path: 'register',
+    component: UserFormComponent,
   },
   {
     path: 'todo_item/:id',
@@ -23,7 +23,7 @@ const routes: Routes = [
     component: TodoItemDetailComponent,
   },
   {
-    path: 'add',
+    path: 'add-todo',
     canActivate: devMode ? [] : [AuthGuardService],
     component: AddFormComponent,
   },

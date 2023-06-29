@@ -44,7 +44,7 @@ export class SessionComponent {
       },
       () => {
         this.showAlert = true;
-        console.log('Completed');
+        console.log('Completed from session count!');
       }
     );
   }

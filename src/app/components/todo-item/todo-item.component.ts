@@ -18,6 +18,8 @@ export class TodoItemComponent {
   };
   @Input() index: number = -1;
 
+  description: string = '';
+
   constructor(public todoService: TodoService) {}
 
   deleteItem(): void {
@@ -26,9 +28,14 @@ export class TodoItemComponent {
 
   startEdit(): void {
     this.todoService.startEdit(this.index);
+    this.description = this.item.description;
   }
 
-  finishEdit(newDescritpion: string): void {
-    this.todoService.finishEdit(newDescritpion);
+  finishEdit(newDescription: string): void {
+    let finalDescription = newDescription.trim();
+    if (newDescription === '') {
+      finalDescription = this.description;
+    }
+    this.todoService.finishEdit(finalDescription);
   }
 }

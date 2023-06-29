@@ -1,5 +1,8 @@
-<div>
-<h1>🍹 Add Form ↙️</h1>
+
+<div *ngStyle="{size: '36px'}">
+  🍹 Add Form
+</div>
+
 <h1>🐸 Summary: {{(todos | async)!.length}}
   <div *ngIf="(todos | async)!.length <= 1; else elseBlock">item</div>
   <ng-template #elseBlock>
@@ -7,25 +10,24 @@
   </ng-template>
   left to do!
 </h1>
-<div class="row">
-  <div class="col-6">
-    <form (ngSubmit)="addItem()">
-      <fieldset>
-        <legend>Add Todos below</legend>
-        <input id="item" type="text" [formControl]="reactiveItem" placeholder="Add a new item" class="form-control">
-        <div>
-          <button type="submit" [disabled]="!reactiveItem.value">ADD</button>
-          </div>
-          </fieldset>
 
-    </form>
-  </div>
-  
-  <div class="col-6"></div>
-  </div>
-  <a routerLink="/todo_list" routerLinkActive="active">
-    <button class="back-button">🥭
-      <h1>Back to the list page</h1>
-    </button>
+<div class="row">
+  <form (ngSubmit)="addItem()">
+    <div class="input-group mb-3">
+    
+      <span class="input-group-text" id="inputGroup-sizing-default">Add Item</span>
+      <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
+        [(ngModel)]="description" placeholder="Buy Milk" required id="editItemInput" name="editItemInput">
+
+      <div class="input-group-append">
+        <button class="btn active margin-left " type="submit" [disabled]="!description">Add</button>
+        </div>
+      </div>
+      </form>
+</div>
+  <div class="col-6">
+  <a routerLink="/" routerLinkActive="active" class="btn btn-lg active" role="button" aria-pressed="true"
+    [ngStyle]="{'font-size': '32px'}">
+    🥭 Back to the list page
   </a>
-  </div>
+</div>

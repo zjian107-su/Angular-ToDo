@@ -1,3 +1,4 @@
+<div class="mb-3">
 <b><a [title]="item.description+'detail'" [routerLink]="['/todo_item', item.id]"
     class="text-dark">{{item.description}}</a></b>
 
@@ -8,12 +9,23 @@ is <b>{{item.status}}</b>.
 </ng-container>
 
 <!-- buttons delete -->
-<button (click)="deleteItem()">Delete</button>
+<a class="btn btn-sm active left-spacing" role="button" aria-pressed="true" (click)="deleteItem()">
+  Delete
+</a>
 
 <!-- buttons edit -->
-<button (click)="startEdit()">Edit</button>
+<a class="btn btn-sm active left-spacing" role="button" aria-pressed="true" (click)="startEdit()">Edit</a>
+</div>
+
 <div *ngIf="index==this.todoService.editIndex">
-  <label for="editItemInput">Edit Item:</label>
-  <input type="text" [value]="this.todoService.editDescription" placeholder="{{item.description}}" #description required>
-  <button (click)="finishEdit(description.value)">Save</button>
+  <form (ngSubmit)="finishEdit(description)">
+    <div class="input-group input-group-sm mb-3">
+      <span class="input-group-text" id="inputGroup-sizing-sm">Edit Item</span>
+      <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+        [(ngModel)]="description" placeholder="{{item.description}}" required id="editItemInput" name="editItemInput">
+      <div class="input-group-append">
+        <button class="btn btn-sm active margin-left " type="submit">Save</button>
+      </div>
+    </div>
+  </form>
 </div>

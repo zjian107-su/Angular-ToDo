@@ -44,7 +44,6 @@ export class TodoListComponent {
   }
 
   filter(search: string): Observable<Item[]> {
-    console.log('searching!!!');
     return new Observable((observer) => {
       const filtered = this.allTodos.filter((item) =>
         item.description.toLowerCase().includes(search.toLowerCase())

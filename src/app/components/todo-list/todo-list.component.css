@@ -1,8 +1,12 @@
 .todo-item {
-  list-style-type: none; /* Removes the bullet point */
   padding: 10px; /* Adds some padding */
-  border: 1px solid #ddd; /* Adds a border */
+  border: 2px solid #ddd; /* Adds a border */
   margin-bottom: 10px; /* Adds some margin at the bottom of each item */
   border-radius: 5px; /* Adds rounded corners */
   background-color: #f9f9f9; /* Changes the background color */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25); /* Adds shadow */
+}
+
+.margin-bottom {
+  margin-bottom: 20px;
 }

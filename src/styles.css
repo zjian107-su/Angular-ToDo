@@ -1,2 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://unpkg.com/bootstrap@5.3/dist/css/bootstrap.min.css');
+
+.margin-left{
+  margin-left: 10px;
+}
+.margin-bottom{
+  margin-bottom: 10px;
+}
+
+/* Dev Debug Helper*/
+.showBorder{
+  border-style: solid;
+  border-width: 3px;
+  border-color: magenta;
+}
+.showBorder-red{
+  border-style: solid;
+  border-width: 3px;
+  border-color: red;
+}
+.showBorder-green{
+  border-style: solid;
+  border-width: 3px;
+  border-color: green;
+}

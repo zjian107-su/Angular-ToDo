@@ -17,15 +17,14 @@ export class AuthGuardService {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<boolean> | Promise<boolean> | boolean | any {
-    return this.authService.isAuthenticated().then((authenticated: boolean) => {
-      if (authenticated) {
-        return true;
-      } else {
-        window.alert('Please log in to view this page.');
-        this.router.navigate(['/']);
-        return false;
-      }
-    });
+  ): boolean {
+    if (this.authService.isAuthenticated()) {
+      return true;
+    } else {
+      window.alert('Please log in to view this page.');
+      console.log('error in the auth guard hits');
+      this.router.navigate(['/']);
+      return false;
+    }
   }
 }

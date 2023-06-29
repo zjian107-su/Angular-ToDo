@@ -6,17 +6,18 @@ import { Injectable } from '@angular/core';
 export class AuthService {
   loggedIn: boolean = false;
 
-  isAuthenticated(): Promise<boolean> {
-    const promise: Promise<boolean> = new Promise((resolve, reject) => {
-      setTimeout(() => {
-        resolve(this.loggedIn);
-      }, 800);
-    });
-    return promise;
+  isAuthenticated(): boolean {
+    return this.loggedIn;
   }
 
-  login(): void {
-    this.loggedIn = true;
+  login(): Promise<void> {
+    return new Promise((resolve) => {
+      setTimeout(() => {
+        this.loggedIn = true;
+        resolve();
+        window.alert('You have been logged in.');
+      }, 800);
+    });
   }
 
   logout(): void {

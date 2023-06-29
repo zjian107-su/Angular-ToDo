@@ -11,6 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class AddFormComponent {
   todos: Observable<Item[]>;
+  description: string = '';
   constructor(public todoService: TodoService) {
     this.todos = this.todoService.allItemsObs$;
   }
