@@ -1,5 +1,5 @@
 
-<div *ngStyle="{size: '36px'}">
+<div [ngStyle]="{'font-size': '36px'}">
   🍹 Add Form
 </div>
 
@@ -17,10 +17,15 @@
     
       <span class="input-group-text" id="inputGroup-sizing-default">Add Item</span>
       <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default"
-        [(ngModel)]="description" placeholder="Buy Milk" required id="editItemInput" name="editItemInput">
+      placeholder="Buy Milk" 
+      required 
+      id="editItemInput" 
+      name="editItemInput"
+      [formControl]="reactiveItem"
+      >
 
       <div class="input-group-append">
-        <button class="btn active margin-left " type="submit" [disabled]="!description">Add</button>
+        <button class="btn active margin-left " type="submit" [disabled]="!reactiveItem.value">Add</button>
         </div>
       </div>
       </form>

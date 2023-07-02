@@ -52,10 +52,10 @@ https://jade-unicorn-f8d230.netlify.app
 - ✅ Log Simulation with observables</li>
 - ✅ Reactive Forms</li>
 - ✅ Custom Directives</li>
+- ✅ HTTP Client</li>
 
 
 **🐡 Future Angular Features in This Site**
-- 🔲 HTTP Client</li>
 - 🔲 Unit Testing</li>
 - 🔲 End-to-End Testing</li>
 - 🔲 Animations</li>

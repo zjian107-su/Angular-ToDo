@@ -1,7 +1,16 @@
 import { Injectable } from '@angular/core';
 import { Item } from '../interfaces/item';
 import { v4 as uuid } from 'uuid';
+import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
+
+interface DeleteResponse {
+  status: string;
+  message: string;
+  todos: Item[];
+}
+
+const HOST = 'http://localhost:3000';
 
 @Injectable({
   providedIn: 'root',
@@ -11,79 +20,48 @@ export class TodoService {
     []
   );
   allItemsObs$: Observable<Item[]> = this.allItemsSubj$.asObservable();
-  allTodo: Item[] = [
-    {
-      description: 'Buy groceries',
-      dueDate: this.addDays(new Date(), 1),
-      priority: 1,
-      status: 'Not started',
-      id: '713c60b2-aaab-4b17-be12-e0da198d4318',
-    },
-    {
-      description: 'Cook dinner',
-      dueDate: this.addDays(new Date(), 2),
-      priority: 2,
-      status: 'In progress',
-      id: uuid(),
-    },
-    {
-      description: 'Wash the dishes',
-      dueDate: this.addDays(new Date(), 2),
-      priority: 3,
-      status: 'Completed',
-      id: uuid(),
-    },
-    {
-      description: 'Do laundry',
-      dueDate: this.addDays(new Date(), 2),
-      priority: 1,
-      status: 'Not started',
-      id: uuid(),
-    },
-    {
-      description: 'Walk the dog',
-      dueDate: this.addDays(new Date(), 2),
-      priority: 2,
-      status: 'Completed',
-      id: uuid(),
-    },
-    {
-      description: 'Take out the trash',
-      dueDate: this.addDays(new Date(), 2),
-      priority: 1,
-      status: 'Completed',
-      id: uuid(),
-    },
-    {
-      description: 'Mow the lawn',
-      dueDate: this.addDays(new Date(), 10),
-      priority: 3,
-      status: 'Not started',
-      id: uuid(),
-    },
-  ];
 
   editIndex: number = -1;
   editDescription: string = '';
 
-  constructor() {
-    this.allItemsSubj$.next(this.allTodo);
+  constructor(private http: HttpClient) {
+    console.log('Daniel');
+    this.http.get<Item[]>(`${HOST}/`).subscribe({
+      next: (data) => {
+        data.forEach((item) => {
+          if (item.dueDate) {
+            item.dueDate = new Date(item.dueDate);
+          }
+        });
+        this.allItemsSubj$.next(data);
+      },
+      error: (error) => {
+        console.log('Error getting data from server: ' + error);
+      },
+      complete: () => {
+        console.log('Finished getting data from server');
+      },
+    });
   }
 
   // CRUD - Create, Read, Update, Delete
   addItem(description: string): void {
-    const newItem: Item = {
-      description,
-      dueDate: this.addDays(new Date(), 7),
-      priority: 1,
-      status: 'Not started',
-      id: uuid(),
-    };
-    this.allItemsSubj$.next([newItem, ...this.allItemsSubj$.getValue()]);
-    console.log(
-      'Current allItemsSubj$ has ' +
-        JSON.stringify(this.allItemsSubj$.getValue())
-    ); // log
+    const newDescription = description.trim();
+
+    this.http
+      .post<Item>(`${HOST}/`, { description: newDescription })
+      .subscribe({
+        next: (data) => {
+          if (data.dueDate) {
+            data.dueDate = new Date(data.dueDate);
+          }
+
+          this.allItemsSubj$.next([data, ...this.allItemsSubj$.getValue()]);
+        },
+        error: (error) => {
+          console.log('Error adding item to server: ' + error);
+        },
+      });
   }
 
   startEdit(index: number) {
@@ -93,32 +71,43 @@ export class TodoService {
 
   finishEdit(description: string): void {
     console.log('finishEdit() called');
+
     const updatedItems = [...this.allItemsSubj$.getValue()];
-    updatedItems[this.editIndex].description = description;
-    this.allItemsSubj$.next(updatedItems);
-    this.editIndex = -1;
-    console.log(
-      'Current allItemsSubj$ has ' +
-        JSON.stringify(this.allItemsSubj$.getValue())
-    );
+    let item = updatedItems[this.editIndex];
+    item.description = description;
+
+    this.http
+      .patch<Item[]>(`${HOST}/${item.id}`, { description: description })
+      .subscribe({
+        next: (data) => {
+          data.forEach((item) => {
+            if (item.dueDate) {
+              item.dueDate = new Date(item.dueDate);
+            }
+          });
+          this.allItemsSubj$.next(data);
+          this.editIndex = -1;
+        },
+        error: (error) => {
+          console.log('Error updating item on server: ' + error);
+        },
+      });
   }
 
-  deleteItem(index: number) {
+  deleteItem(id: string) {
     console.log('deleteItem() called');
-    const updatedItems = [...this.allItemsSubj$.getValue()];
-    updatedItems.splice(index, 1);
-    this.allItemsSubj$.next(updatedItems);
-    console.log(
-      'Current allItemsSubj$ has ' +
-        JSON.stringify(this.allItemsSubj$.getValue())
-    );
+    this.http.delete<DeleteResponse>(`${HOST}/${id}`).subscribe({
+      next: (data) => {
+        data.todos.forEach((item) => {
+          if (item.dueDate) {
+            item.dueDate = new Date(item.dueDate);
+          }
+        });
+        this.allItemsSubj$.next(data.todos);
+      },
+      error: (error) => {
+        console.log('Error deleting item on server: ' + error);
+      },
+    });
   }
-
-  // helper functions
-  addDays(date: Date, days: number): Date {
-    let result = new Date(date);
-    result.setDate(result.getDate() + days);
-    return result;
-  }
-
 }

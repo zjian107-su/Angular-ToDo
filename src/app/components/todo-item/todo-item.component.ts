@@ -23,7 +23,7 @@ export class TodoItemComponent {
   constructor(public todoService: TodoService) {}
 
   deleteItem(): void {
-    this.todoService.deleteItem(this.index);
+    this.todoService.deleteItem(this.item.id);
   }
 
   startEdit(): void {

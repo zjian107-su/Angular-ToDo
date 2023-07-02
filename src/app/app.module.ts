@@ -17,6 +17,7 @@ import { UserFormComponent } from './components/user-form/user-form.component';
 import { SessionComponent } from './components/session/session.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StatusIndicatorDirective } from './directives/status-indicator-directive.directive';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,13 @@ import { StatusIndicatorDirective } from './directives/status-indicator-directiv
     SessionComponent,
     StatusIndicatorDirective,
   ],
-  imports: [BrowserModule, AppRoutingModule, FormsModule, ReactiveFormsModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
   exports: [],
