@@ -10,7 +10,10 @@ interface DeleteResponse {
   todos: Item[];
 }
 
-const HOST = 'http://localhost:3000';
+const devMode = false;
+const HOST = devMode
+  ? 'http://localhost:3000'
+  : 'https://stark-lowlands-83242-5014e4d4a6ea.herokuapp.com';
 
 @Injectable({
   providedIn: 'root',
