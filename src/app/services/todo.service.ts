@@ -28,7 +28,6 @@ export class TodoService {
   editDescription: string = '';
 
   constructor(private http: HttpClient) {
-    console.log('Daniel');
     this.http.get<Item[]>(`${HOST}/`).subscribe({
       next: (data) => {
         data.forEach((item) => {
