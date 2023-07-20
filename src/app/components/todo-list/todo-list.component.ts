@@ -30,7 +30,7 @@ export class TodoListComponent {
       (todos) => {
         this.loading = false;
         this.allTodos = todos;
-        this.emptyData = this.allTodos.length === 0;
+        this.emptyData = todos.length === 0;
         this.allTodos$ = this.filter(this.search);
       }
     );
