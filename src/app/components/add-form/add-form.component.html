@@ -1,7 +1,7 @@
 
-<div [ngStyle]="{'font-size': '36px'}">
+<h1>
   🍹 Add Form
-</div>
+</h1>
 
 <h1>🍊 Summary: {{(todos | async)!.length}}
   <div *ngIf="(todos | async)!.length <= 1; else elseBlock">item</div>

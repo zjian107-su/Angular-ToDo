@@ -21,15 +21,24 @@
 </div>
 
 <!-- show todo -->
-<div *ngFor="let item of allTodos$ | async; let indexOfElement=index" class="todo-item margin-top"
-  style="display: flex; justify-content: space-between; align-items: flex-start;">
-    <!-- {{item.description}} -->
-    <app-todo-item [item]="item" [index]="indexOfElement"></app-todo-item>
-    <div [appStatusIndicator]="item.status" style="width: 20px; height: 20px;">
-    </div>
+<h1 *ngIf="loading">Loading...</h1>
+<div *ngIf="!loading && !emptyData">
+  <div *ngFor="let item of allTodos$ | async; let indexOfElement=index" class="todo-item margin-top"
+style="display: flex; justify-content: space-between;       align-items: flex-start;">
+
+  <!-- {{item.description}} -->
+  <app-todo-item [item]="item" [index]="indexOfElement"></app-todo-item>
+  <div [appStatusIndicator]="item.status" style="width: 20px; height: 20px;">
   </div>
+  </div>
+</div>
 
+<!-- no data  -->
+<div *ngIf="!loading && emptyData">
+  <p>No todos found.</p>
+</div>
 
+<!-- add todo -->
 <div>
   <h1>
     <a routerLink="/add-todo" routerLinkActive="active" class="btn btn-lg active" role="button" aria-pressed="true"

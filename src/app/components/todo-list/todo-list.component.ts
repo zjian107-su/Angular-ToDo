@@ -20,13 +20,17 @@ export class TodoListComponent {
   allTodos: Item[] = [];
   search: string = '';
   searchControl = new FormControl();
+  loading = true;
+  emptyData = false;
 
   constructor(public todoService: TodoService) {}
 
   ngOnInit() {
     this.allTodoSubscription = this.todoService.allItemsObs$.subscribe(
       (todos) => {
+        this.loading = false;
         this.allTodos = todos;
+        this.emptyData = this.allTodos.length === 0;
         this.allTodos$ = this.filter(this.search);
       }
     );
