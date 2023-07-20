@@ -13,7 +13,7 @@ interface DeleteResponse {
 const devMode = false;
 const HOST = devMode
   ? 'http://localhost:3000'
-  : 'https://daniel-node-todo-backend-08ae76268480.herokuapp.com/';
+  : 'https://daniel-node-todo-backend-08ae76268480.herokuapp.com';
 
 @Injectable({
   providedIn: 'root',
