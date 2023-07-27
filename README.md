@@ -1,7 +1,14 @@
 # 🍉 Angular ToDo
 
 ## 🫐 Full Stack Online Demo
-https://endearing-pastelito-1dcafa.netlify.app/
+**Front end**: **https://angular-daniel-todo.netlify.app**
+
+Github: https://github.com/zjian107-su/Angular-ToDo
+
+**Back end**: https://stark-lowlands-83242-5014e4d4a6ea.herokuapp.com
+
+Github link: https://github.com/zjian107-su/Node-ToDo
+
 
 ## 🍊 MindMap
 <img src="https://github.com/zjian107-su/Angular-ToDo/assets/35544956/77c954c1-1a2d-4da1-98e9-41d3437d8c3f" width="80%">
