@@ -1,13 +1,15 @@
 # 🍉 Angular ToDo
 
-## 🫐 Full Stack Online Demo
-**Front end**: **https://angular-daniel-todo.netlify.app**
+## 🫐 Live Demo and Code
+[**Front-End Live Demo**](https://angular-daniel-todo.netlify.app)
 
-Github: https://github.com/zjian107-su/Angular-ToDo
+[Github Source Code](https://github.com/zjian107-su/Angular-ToDo)
 
-**Back end**: https://stark-lowlands-83242-5014e4d4a6ea.herokuapp.com
+<br>
 
-Github link: https://github.com/zjian107-su/Node-ToDo
+[**Back-End Live Demo**](https://stark-lowlands-83242-5014e4d4a6ea.herokuapp.com)
+
+[Github Source Code](https://github.com/zjian107-su/Node-ToDo)
 
 
 ## 🍊 MindMap
